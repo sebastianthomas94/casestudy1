@@ -20,7 +20,14 @@ $("#loader").hide();
                 for(var i in data)
                     {   //alert(data['articles'][i].title);
                         //console.log(data['articles'][i].title);
-                        output+="<tr><td><input type='checkbox'  value='true' id='box'"+count+"></td>";
+                        output+="<tr><td><input type='checkbox'  value='true' id='box'"+count;
+                        
+                        if (data[i].completed==true)
+                            output+=' checked disabled></td>';
+                        else    
+                            output+="></td>";
+                        
+                        
                         output+='<td><h4>'+data[i].title+'</h4></td></tr>';
                         count++;
                         
@@ -36,16 +43,19 @@ $("#loader").hide();
                         var idname="box"+count1;
                         console.log(idname); 
                 
-                
-                        /* for(var i=0; i<=200;i++)
+                    }
+                     /* for(var i in data)
                         {
                             var status="";
                             status=document.getElementById(idname);
-                            if(data[i].completed== true)
-                            status.checked = true;
+                            if(data[i].completed)
+                                alert(status);
+                                if(!status){
+                                    status.checked = true; 
+                                    alert("found1");} 
                         } */
                 
-                    }
+                    
 
 
                 $("#todo").html(output);
