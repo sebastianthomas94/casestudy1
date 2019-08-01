@@ -1,7 +1,7 @@
 $(document).ready(function()
 {   
 
-    var output='<div class="container"><table class="table">';
+    var output='<div class="container"><table class="table" style="margin-top:9%"><thead><tr><th><b><h4>#</h4></b></th><th></th><th><b><h4>List</h4></b></th></tr></thead><tbody>';
 $("#loader").hide();
 
         $.ajax({
@@ -16,11 +16,12 @@ $("#loader").hide();
                 console.log(data);
                 //alert(data['articles'][1].title);
                 var count=1;
+                var j=1;
 
                 for(var i in data)
                     {   //alert(data['articles'][i].title);
                         //console.log(data['articles'][i].title);
-                        output+="<tr><td><input type='checkbox'  value='true' id='box'"+count;
+                        output+="<tr><td>"+j+++"</td><td><input type='checkbox'  value='true' id='box'"+count;
                         
                         if (data[i].completed==true)
                             output+=' checked disabled></td>';
@@ -33,7 +34,7 @@ $("#loader").hide();
                         
                     }
 
-                    output+='</table></div>';
+                    output+='</tbody></table></div>';
                     console.log(output);
                     
                     
@@ -77,7 +78,7 @@ $("#loader").hide();
                         
                         var mypromis=new Promise((resolve, reject)=>{ 
                             if (count2>=5)
-                                {resolve("competed 5!");
+                                {resolve("Congrats. 5 Tasks have been Successfully Completed");
                                 count2=0;}
             
                             else
